@@ -1,17 +1,20 @@
-function formatMessage(message, maxLength) {
-    if (message.length <= maxLength) {
-        
-        return message;
+
+function makeArray(firstArray, secondArray, maxLength) {
+    // Об'єднання масивів
+    const combinedArray = firstArray.concat(secondArray);
+
+    // Перевірка довжини та повернення результату
+    if (maxLength > 0) {
+        return combinedArray.slice(0, maxLength);
     } else {
-        
-        return message.slice(0, maxLength) + '...';
+        return [];
     }
 }
 
-
-console.log(formatMessage("Curabitur ligula sapien", 16)); 
-console.log(formatMessage("Curabitur ligula sapien", 23)); 
-console.log(formatMessage("Vestibulum facilisis purus nec", 20)); 
-console.log(formatMessage("Vestibulum facilisis purus nec", 30)); 
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15));
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); 
+// Приклад використання:
+console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
+console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
+console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
